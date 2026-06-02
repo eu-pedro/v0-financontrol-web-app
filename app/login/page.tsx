@@ -46,7 +46,7 @@ export default function LoginPage() {
             <span className="text-primary-foreground font-bold text-lg">FC</span>
           </div>
           <h1 className="text-2xl font-bold text-foreground">FinanControl</h1>
-          <p className="text-muted-foreground text-sm">Gestao financeira pessoal</p>
+          <p className="text-muted-foreground text-sm">Gestão financeira pessoal</p>
         </div>
 
         <Card className="bg-card border-border">
