@@ -19,26 +19,23 @@ export default function LoginPage() {
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-    
-    if (!email || !password) {
-      setError("Preencha todos os campos");
-      return;
-    }
-    
-    if (password.length < 6) {
-      setError("Senha deve ter pelo menos 6 caracteres");
-      return;
-    }
-    
-    const success = login(email, password);
-    if (success) {
-      router.push("/dashboard");
-    } else {
-      setError("Credenciais invalidas");
-    }
-  };
+  e.preventDefault();
+  setError("");
+
+  if (!email.trim() || !password.trim()) {
+    return setError("Preencha todos os campos");
+  }
+
+  if (password.length < 6) {
+    return setError("Senha deve ter pelo menos 6 caracteres");
+  }
+
+  if (!login(email, password)) {
+    return setError("Credenciais invalidas");
+  }
+
+  router.push("/dashboard");
+};
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
@@ -56,7 +53,7 @@ export default function LoginPage() {
           <CardHeader className="space-y-1">
             <CardTitle className="text-xl text-card-foreground">Entrar</CardTitle>
             <CardDescription>
-              Digite suas credenciais para acessar sua conta
+              Digite suas credenciais para acessar sua conta.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -116,7 +113,7 @@ export default function LoginPage() {
             </form>
 
             <div className="mt-6 text-center text-sm">
-              <span className="text-muted-foreground">Nao tem uma conta? </span>
+              <span className="text-muted-foreground">Não tem uma conta? </span>
               <Link href="/register" className="text-accent hover:underline font-medium">
                 Cadastre-se
               </Link>
